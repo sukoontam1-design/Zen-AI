@@ -1,0 +1,610 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+​<!-- SEO & Founder Indexing Meta Tags -->
+<title>Zen AI - Created by Tawsifur Rahman Tamim</title>
+<meta name="description" content="Zen AI is an advanced all-in-one artificial intelligence assistant featuring multi-language support, AR camera scanning, and image generation. Founded and developed by Tawsifur Rahman Tamim from Baridhara, Dhaka (Born March 1 in Noakhali).">
+<meta name="author" content="Tawsifur Rahman Tamim">
+<meta name="keywords" content="Zen AI, Zen AI founder, Tawsifur Rahman Tamim, Zen AI creator, AI assistant app, Baridhara Dhaka, Object Recognition">
+​<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "SoftwareApplication",
+"name": "Zen AI",
+"operatingSystem": "All",
+"applicationCategory": "UtilitiesApplication",
+"creator": {
+"@type": "Person",
+"name": "Tawsifur Rahman Tamim",
+"birthDate": "March 1",
+"birthPlace": "Noakhali",
+"homeLocation": "Baridhara, Dhaka"
+},
+"description": "An all-in-one AI assistant created by Tawsifur Rahman Tamim featuring object recognition and multi-language support."
+}
+</script>
+​<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+​<!-- Google AdMob Script -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-7572212806401123" crossorigin="anonymous"></script>
+​<style>
+:root {
+--bg-color: #0f172a;
+--card-bg: #1e293b;
+--accent: #6366f1;
+--accent-hover: #4f46e5;
+--text-main: #f8fafc;
+--text-muted: #94a3b8;
+--border: #334155;
+}
+​* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Plus Jakarta Sans', sans-serif;
+-webkit-tap-highlight-color: transparent;
+}
+​body {
+background-color: var(--bg-color);
+color: var(--text-main);
+display: flex;
+flex-direction: column;
+height: 100vh;
+overflow: hidden;
+}
+​/* Intro Screen */
+#intro-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: var(--bg-color);
+z-index: 1000;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+transition: opacity 0.8s ease;
+}
+​.intro-logo {
+font-size: 60px;
+color: var(--accent);
+margin-bottom: 20px;
+animation: pulse 2s infinite;
+}
+​.intro-text {
+font-size: 24px;
+font-weight: 700;
+color: var(--text-main);
+margin-bottom: 10px;
+}
+​.sub-intro-text {
+font-size: 14px;
+color: var(--accent);
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+​@keyframes pulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.05); }
+100% { transform: scale(1); }
+}
+​/* Top Header */
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 20px;
+background: var(--card-bg);
+border-bottom: 1px solid var(--border);
+z-index: 10;
+}
+​.logo-area {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+​.logo-area i {
+font-size: 24px;
+color: var(--accent);
+}
+​.logo-area h1 {
+font-size: 20px;
+font-weight: 700;
+letter-spacing: 0.5px;
+}
+​.profile-btn {
+background: var(--border);
+border: none;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+color: var(--text-main);
+font-size: 18px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: 0.2s;
+}
+​.profile-btn:active {
+transform: scale(0.95);
+}
+​/* Main Screen Container */
+.main-container {
+flex: 1;
+overflow-y: auto;
+position: relative;
+display: flex;
+flex-direction: column;
+}
+​.tab-content {
+display: none;
+flex: 1;
+flex-direction: column;
+padding: 20px;
+}
+​.tab-content.active {
+display: flex;
+}
+​/* Chat Section */
+.chat-messages {
+flex: 1;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+gap: 12px;
+padding-bottom: 20px;
+}
+​.message {
+max-width: 80%;
+padding: 12px 16px;
+border-radius: 14px;
+font-size: 14px;
+line-height: 1.5;
+}
+​.message.user {
+background: var(--accent);
+color: white;
+align-self: flex-end;
+border-bottom-right-radius: 4px;
+}
+​.message.ai {
+background: var(--card-bg);
+color: var(--text-main);
+align-self: flex-start;
+border-bottom-left-radius: 4px;
+border: 1px solid var(--border);
+}
+​.chat-input-area {
+display: flex;
+gap: 10px;
+padding: 10px 0;
+background: var(--bg-color);
+}
+​.chat-input-area input {
+flex: 1;
+background: var(--card-bg);
+border: 1px solid var(--border);
+padding: 12px 16px;
+border-radius: 25px;
+color: white;
+outline: none;
+font-size: 14px;
+}
+​.chat-input-area button {
+background: var(--accent);
+border: none;
+width: 48px;
+height: 48px;
+border-radius: 50%;
+color: white;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+}
+​/* AR Scanner & Camera Section */
+.scanner-box {
+flex: 1;
+background: #000;
+border-radius: 16px;
+position: relative;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px dashed var(--accent);
+min-height: 250px;
+}
+​.scanner-overlay {
+position: absolute;
+border: 2px solid #38bdf8;
+width: 70%;
+height: 60%;
+box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 10px;
+color: #38bdf8;
+font-weight: 600;
+font-size: 13px;
+background: rgba(56, 189, 248, 0.05);
+text-align: center;
+}
+​.color-picker-bar {
+display: flex;
+gap: 10px;
+margin-top: 15px;
+justify-content: center;
+}
+​.color-dot {
+width: 32px;
+height: 32px;
+border-radius: 50%;
+cursor: pointer;
+border: 2px solid white;
+transition: transform 0.2s;
+}
+​.color-dot:active {
+transform: scale(1.1);
+}
+​/* Image Generator Section */
+.gen-box {
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+​.gen-preview {
+width: 100%;
+height: 220px;
+background: var(--card-bg);
+border-radius: 16px;
+border: 1px solid var(--border);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--text-muted);
+font-size: 14px;
+text-align: center;
+padding: 20px;
+}
+​.gen-box input {
+background: var(--card-bg);
+border: 1px solid var(--border);
+padding: 14px;
+border-radius: 12px;
+color: white;
+outline: none;
+}
+​.primary-btn {
+background: var(--accent);
+border: none;
+padding: 14px;
+border-radius: 12px;
+color: white;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s;
+}
+​.primary-btn:active {
+background: var(--accent-hover);
+}
+​/* AdMob Banner Placeholder */
+.ad-container {
+width: 100%;
+text-align: center;
+padding: 10px 0;
+background: var(--bg-color);
+}
+​/* Bottom Navigation Bar */
+.bottom-nav {
+display: flex;
+background: var(--card-bg);
+border-top: 1px solid var(--border);
+padding: 10px 0;
+justify-content: space-around;
+}
+​.nav-item {
+background: none;
+border: none;
+color: var(--text-muted);
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+font-size: 11px;
+cursor: pointer;
+flex: 1;
+}
+​.nav-item i {
+font-size: 20px;
+}
+​.nav-item.active {
+color: var(--accent);
+}
+​/* Settings Modal */
+.modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.7);
+display: none;
+align-items: center;
+justify-content: center;
+z-index: 100;
+padding: 20px;
+}
+​.modal.open {
+display: flex;
+}
+​.modal-content {
+background: var(--card-bg);
+width: 100%;
+max-width: 380px;
+padding: 25px;
+border-radius: 20px;
+border: 1px solid var(--border);
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+​.modal-content h3 {
+font-size: 18px;
+margin-bottom: 2px;
+}
+​.founder-tag {
+font-size: 12px;
+color: var(--accent);
+font-weight: 600;
+margin-bottom: 10px;
+border-bottom: 1px solid var(--border);
+padding-bottom: 8px;
+}
+​.lang-search-box {
+width: 100%;
+background: var(--bg-color);
+border: 1px solid var(--border);
+color: white;
+padding: 12px;
+border-radius: 10px;
+outline: none;
+font-size: 14px;
+margin-bottom: 8px;
+}
+​.modal-content select {
+background: var(--bg-color);
+border: 1px solid var(--border);
+color: white;
+padding: 12px;
+border-radius: 10px;
+outline: none;
+font-size: 14px;
+max-height: 150px;
+}
+​.close-modal {
+background: var(--border);
+border: none;
+padding: 10px;
+border-radius: 10px;
+color: white;
+cursor: pointer;
+font-weight: 600;
+margin-top: 5px;
+}
+</style>
+</head>
+<body>
+​<!-- Intro Animation Screen -->
+<div id="intro-screen">
+<i class="fa-solid fa-brain intro-logo"></i>
+<div class="sub-intro-text">Tamim's Studio Presents</div>
+<div class="intro-text">Zen AI</div>
+</div>
+​<!-- Header -->
+<header>
+<div class="logo-area">
+<i class="fa-solid fa-brain"></i>
+<h1 id="app-title">Zen AI</h1>
+</div>
+<button class="profile-btn" onclick="toggleSettings(true)"><i class="fa-solid fa-gear"></i></button>
+</header>
+​<!-- Main Container -->
+<div class="main-container">
+<!-- Tab 1: Chat Assistant -->
+<div id="tab-chat" class="tab-content active">
+<div class="chat-messages" id="chatContainer">
+<div class="message ai" id="welcomeMsg">হ্যালো! আমি Zen AI। আজ আপনাকে কীভাবে সাহায্য করতে পারি?</div>
+</div>
+<div class="chat-input-area">
+<input type="text" id="userInput" placeholder="এখানে কিছু লিখুন...">
+<button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+</div>
+</div>
+​<!-- Tab 2: AR Wall & Camera Scanner with Object Recognition -->
+<div id="tab-scanner" class="tab-content">
+<div class="scanner-box" id="scannerBox">
+<div class="scanner-overlay" id="scannerBorder">
+<span id="scannerText" style="margin-bottom: 8px;">দেওয়াল স্ক্যান হচ্ছে...</span>
+<span id="objectRecognitionText" style="font-size: 11px; color: #94a3b8; font-weight: normal;">(অবজেক্ট রিকগনিশন সক্রিয়)</span>
+</div>
+</div>
+<div class="color-picker-bar">
+<div class="color-dot" style="background: #38bdf8;" onclick="changeColor('#38bdf8')"></div>
+<div class="color-dot" style="background: #f43f5e;" onclick="changeColor('#f43f5e')"></div>
+<div class="color-dot" style="background: #10b981;" onclick="changeColor('#10b981')"></div>
+<div class="color-dot" style="background: #f59e0b;" onclick="changeColor('#f59e0b')"></div>
+<div class="color-dot" style="background: #a855f7;" onclick="changeColor('#a855f7')"></div>
+</div>
+</div>
+​<!-- Tab 3: Image Generator -->
+<div id="tab-image" class="tab-content">
+<div class="gen-box">
+<div class="gen-preview" id="genPreview">আপনার প্রম্পট অনুযায়ী এআই ছবি এখানে তৈরি হবে...</div>
+<input type="text" id="imagePrompt" placeholder="যেমন: A futuristic city in cyberpunk style...">
+<button class="primary-btn" onclick="generateImage()">ছবি তৈরি করুন (Generate)</button>
+</div>
+</div>
+</div>
+​<!-- AdMob Banner Ad Section -->
+<div class="ad-container">
+<ins class="adsbygoogle"
+style="display:inline-block;width:320px;height:50px"
+data-ad-client="ca-app-pub-7572212806401123"
+data-ad-slot="YOUR_AD_UNIT_ID"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+​<!-- Bottom Navigation -->
+<nav class="bottom-nav">
+<button class="nav-item active" onclick="switchTab('chat', this)">
+<i class="fa-solid fa-comments"></i>
+<span id="nav-chat">চ্যাট</span>
+</button>
+<button class="nav-item" onclick="switchTab('scanner', this)">
+<i class="fa-solid fa-camera"></i>
+<span id="nav-scanner">এআর স্ক্যানার</span>
+</button>
+<button class="nav-item" onclick="switchTab('image', this)">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+<span id="nav-image">ইমেজ আর্ট</span>
+</button>
+</nav>
+​<!-- Settings Modal -->
+<div class="modal" id="settingsModal">
+<div class="modal-content">
+<h3 id="settings-title">প্রোফাইল ও সেটিংস</h3>
+<div class="founder-tag">Founder: Tawsifur Rahman Tamim (Baridhara, Dhaka)</div>
+​<label style="font-size: 13px; color: var(--text-muted);" id="lang-label">বিশ্বের যেকোনো ভাষা খুঁজুন (Search Language):</label>
+<input type="text" id="langSearch" class="lang-search-box" placeholder="টাইপ করুন (যেমন: Bengali, Arabic...)" onkeyup="filterLanguages()">
+​<select id="languageSelect" size="5" onchange="changeLanguage(this.value)">
+<option value="bn">বাংলা (Bengali)</option>
+<option value="en">English (US)</option>
+<option value="ar">العربية (Arabic)</option>
+<option value="es">Español (Spanish)</option>
+<option value="hi">हिन्दी (Hindi)</option>
+<option value="ur">اردو (Urdu)</option>
+<option value="zh">中文 (Chinese)</option>
+<option value="fr">Français (French)</option>
+<option value="de">Deutsch (German)</option>
+<option value="ja">日本語 (Japanese)</option>
+<option value="ko">한국어 (Korean)</option>
+<option value="ru">Русский (Russian)</option>
+<option value="pt">Português (Portuguese)</option>
+<option value="it">Italiano (Italian)</option>
+<option value="tr">Türkçe (Turkish)</option>
+<option value="fa">فارسی (Persian)</option>
+<option value="id">Bahasa Indonesia</option>
+<option value="ms">Bahasa Melayu</option>
+<option value="vi">Tiếng Việt</option>
+<option value="th">ไทย (Thai)</option>
+</select>
+​<button class="close-modal" onclick="toggleSettings(false)">বন্ধ করুন</button>
+</div>
+</div>
+​<script>
+// Hide Intro Animation after 2.5 seconds
+window.addEventListener('load', () => {
+setTimeout(() => {
+const intro = document.getElementById('intro-screen');
+intro.style.opacity = '0';
+setTimeout(() => intro.style.display = 'none', 800);
+}, 2500);
+});
+​function switchTab(tabName, btnElement) {
+document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+document.getElementById('tab-' + tabName).classList.add('active');
+btnElement.classList.add('active');
+}
+​function toggleSettings(show) {
+const modal = document.getElementById('settingsModal');
+if(show) modal.classList.add('open');
+else modal.classList.remove('open');
+}
+​function filterLanguages() {
+let input = document.getElementById('langSearch').value.toLowerCase();
+let select = document.getElementById('languageSelect');
+let options = select.getElementsByTagName('option');
+for (let i = 0; i < options.length; i++) {
+let txtValue = options[i].textContent || options[i].innerText;
+if (txtValue.toLowerCase().indexOf(input) > -1) {
+options[i].style.display = "";
+} else {
+options[i].style.display = "none";
+}
+}
+}
+​function sendMessage() {
+const input = document.getElementById('userInput');
+const container = document.getElementById('chatContainer');
+const text = input.value.trim();
+if(!text) return;
+const userDiv = document.createElement('div');
+userDiv.className = 'message user';
+userDiv.innerText = text;
+container.appendChild(userDiv);
+input.value = '';
+container.scrollTop = container.scrollHeight;
+​setTimeout(() => {
+const aiDiv = document.createElement('div');
+aiDiv.className = 'message ai';
+aiDiv.innerText = "ধন্যবাদ! Zen AI আপনার সেবায় প্রস্তুত। (Created by Tawsifur Rahman Tamim, Baridhara)";
+container.appendChild(aiDiv);
+container.scrollTop = container.scrollHeight;
+}, 600);
+}
+​function changeColor(color) {
+const border = document.getElementById('scannerBorder');
+border.style.borderColor = color;
+border.style.boxShadow = 0 0 20px ${color};
+document.getElementById('scannerText').style.color = color;
+document.getElementById('scannerText').innerText = "সিলেক্টেড কালার অ্যাপ্লাই করা হয়েছে!";
+}
+​function generateImage() {
+const prompt = document.getElementById('imagePrompt').value.trim();
+const preview = document.getElementById('genPreview');
+if(!prompt) {
+alert('দয়া করে প্রম্পট লিখুন!');
+return;
+}
+preview.innerHTML = <i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px;"></i><br>"${prompt}" এর জন্য এআই ছবি রেন্ডার হচ্ছে...;
+setTimeout(() => {
+preview.innerHTML = <div style="color: #38bdf8; font-weight: 600;">সফলভাবে জেনারেট হয়েছে! <br><span style="font-size: 12px; color: var(--text-muted);">(Zen AI by Tawsifur Rahman Tamim)</span></div>;
+}, 1500);
+}
+​const translations = {
+bn: { chat: "চ্যাট", scanner: "এআর স্ক্যানার", image: "ইমেজ আর্ট", welcome: "হ্যালো! আমি Zen AI। আজ আপনাকে কীভাবে সাহায্য করতে পারি?", settings: "প্রোফাইল ও সেটিংস", langLabel: "বিশ্বের যেকোনো ভাষা খুঁজুন (Search Language):", scanText: "দেওয়াল স্ক্যান হচ্ছে..." },
+en: { chat: "Chat", scanner: "AR Scanner", image: "Image Art", welcome: "Hello! I am Zen AI. How can I help you today?", settings: "Profile & Settings", langLabel: "Search Language:", scanText: "Scanning wall..." },
+ar: { chat: "محادثة", scanner: "ماسح ضوئي", image: "فن الصور", welcome: "أهلاً بك! أنا Zen AI. كيف يمكنني مساعدتك اليوم؟", settings: "الملف الشخصي والإعدادات", langLabel: "ابحث عن اللغة:", scanText: "جاري مسح الجدار..." },
+es: { chat: "Chat", scanner: "Escáner AR", image: "Arte IA", welcome: "¡Hola! Soy Zen AI. ¿Cómo puedo ayudarte hoy?", settings: "Perfil y Ajustes", langLabel: "Buscar Idioma:", scanText: "Escaneando pared..." },
+hi: { chat: "चैट", scanner: "स्कैनर", image: "इमेज आर्ट", welcome: "नमस्ते! मैं Zen AI हूँ। आज मैं आपकी कैसे मदद कर सकता हूँ?", settings: "प्रोफाइल और सेटिंग्स", langLabel: "भाषा खोजें:", scanText: "दीवार स्कैन हो रही है..." }
+};
+​function changeLanguage(lang) {
+const t = translations[lang];
+if(!t) return;
+document.getElementById('nav-chat').innerText = t.chat;
+document.getElementById('nav-scanner').innerText = t.scanner;
+document.getElementById('nav-image').innerText = t.image;
+document.getElementById('welcomeMsg').innerText = t.welcome;
+document.getElementById('settings-title').innerText = t.settings;
+document.getElementById('lang-label').innerText = t.langLabel;
+document.getElementById('scannerText').innerText = t.scanText;
+}
+</script>
+</body>
+</html>
+<!-- Google AdMob Script Example -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ca-app-pub-7572212806401123/5678693819" crossorigin="anonymous"></script>
